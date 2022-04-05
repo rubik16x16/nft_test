@@ -54,7 +54,7 @@ contract Panda is ERC721, Ownable, WhiteList {
 		return newItemId;
 	}
 
-	function withdraw() external {
+	function withdraw() external onlyOwner {
 
 		beneficiary.transfer(getBalance());
 	}
@@ -82,7 +82,7 @@ contract Panda is ERC721, Ownable, WhiteList {
 		return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, tokenId.toString(), "/metadata")) : "";
 	}
 
-	function setBaseTokenURI(string memory _baseTokenURI) public {
+	function setBaseTokenURI(string memory _baseTokenURI) public onlyOwner {
 
 		baseTokenURI = _baseTokenURI;
 	}

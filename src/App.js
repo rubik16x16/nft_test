@@ -27,7 +27,7 @@ function App() {
 
 		const address = await signer.getAddress();
 		const balance = await contract.balanceOf(address);
-		console.log(ethers.BigNumber.from(balance).toNumber());
+		console.log(balance.toNumber());
 	}
 
 	async function tokenUri(){
@@ -96,13 +96,13 @@ function App() {
 			});
 	}
 
-	async function withDraw(){
+	async function withdraw(){
 
 		const provider = new ethers.providers.Web3Provider(window.ethereum);
 		const signer = provider.getSigner();
 		const contract = new ethers.Contract(pandaAddress, Panda.abi, signer);
 
-		contract.withDraw('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266')
+		contract.sendFunds('0xee308bfDd3Fe661C757DFa6a24a8eD245e40Ed79')
 			.then(res => {
 
 				console.log(res);
@@ -195,10 +195,10 @@ function App() {
 			<button type="button" onClick={getNumWhiteListUsers}>getNumWhiteListUsers</button>
 			<button type="button" onClick={getNumTokens}>getNumTokens</button>
 			<button type="button" onClick={buyWhiteList}>BuyWhiteList</button>
+			<button type="button" onClick={withdraw}>withdraw</button>
 			{/* <button type="button" onClick={tokenUri}>TokenUri</button>
 			<button type="button" onClick={getEvents}>Get events</button>
 			<button type="button" onClick={getUser}>GetUser</button>
-			<button type="button" onClick={withDraw}>withDraw</button>
 			<button type="button" onClick={getBalance}>getBalance</button>
 			<button type="button" onClick={getPayments}>getPayments</button>
 			<button type="button" onClick={setPayments}>setPayment</button> */}
