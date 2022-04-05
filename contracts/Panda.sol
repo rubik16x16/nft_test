@@ -16,7 +16,7 @@ contract Panda is ERC721, Ownable, WhiteList {
 
 	string public baseTokenURI = "http://167.71.67.226/nft/";
 
-	uint256 public constant TOTAL_SUPPLY = 5_511;
+	uint256 public constant TOTAL_SUPPLY = 5_554;
 	uint public constant WHITE_LIST_PRICE = 0.07 ether;
 	uint public constant PRICE = 0.15 ether;
 	uint public numberOfTokens;
